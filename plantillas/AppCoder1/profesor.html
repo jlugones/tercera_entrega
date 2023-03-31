@@ -1,0 +1,31 @@
+{% extends "AppCoder1/../base.html" %}
+
+{% block contenidoCambia %}
+
+{# Mostrar listado #}
+    <h1>Listado profesores de la academia:</h1>
+    {% if profesores %}
+        {% for profesor in profesores%}
+
+            <p> {{ profesor }}
+                <a href=" {% url 'AppCoder1EliminarProfesor' profesor.apellido %} ">Eliminar</a>
+                <a href=" {% url 'AppCoder1EditarProfesor' profesor.apellido %} ">Editar</a>
+
+            </p>
+        {% endfor %}
+    {% else %}
+        <h4 > No hay profesores cargados en este momento.</h4>
+    {% endif %}
+
+<button onclick="location.href= '{% url 'AppCoder1CrearProfesor' %}' "  >Guardar profesor nuevo</button>
+
+
+{# Buscar en listado #}
+    <form action="{% url 'AppCoder1BusqProfesion' %} " method="POST" style="background-color: lightsteelblue">
+        {% csrf_token %}
+        {{ formsBusqProf.as_table }}
+        <input type="submit" value="Buscar">
+
+    </form>
+{% endblock %}
+

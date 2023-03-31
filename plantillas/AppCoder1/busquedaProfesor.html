@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block contenidoCambia %}
+    {% if profesores %}
+        {% for profesor in profesores %}
+            <p> {{ profesor }}</p>
+        {% endfor %}
+    {% else %}
+        <h3>No se encontró el profesor.</h3>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "AppCoder1/../base.html" %}
+
+{% block contenidoCambia %}
+    <h1>Cursos de la academia:</h1>
+
+    {# Mostrar listado y eliminar a su lado#}
+    {% if cursos %}
+        {% for curso in cursos %}
+            <p>
+                {{ curso }}
+                <a href=" {% url 'AppCoder1EliminarCurso' curso.idc %} ">Eliminar</a>
+                <a href=" {% url 'AppCoder1EditarCurso' curso.idc %} ">Editar</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <h4> No hay cursos en el momento</h4>
+    {% endif %}
+
+<button onclick="location.href= '{% url 'AppCoder1CrearCurso' %}' "  >Crear curso nuevo</button>
+
+    {# Buscar en el listado #}
+    <form action="{% url 'AppCoderBusqCurso' %}" style="background-color: lightsteelblue" >
+        {{ formsBusqCamada.as_table }}
+        <input type="submit" value="Buscar">
+
+    </form>
+
+
+{% endblock %}
+

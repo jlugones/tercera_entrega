@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block contenidoCambia %}
+    {% if estudiantes %}
+        {% for estudiante in estudiantes %}
+            <p> {{ estudiante }}</p>
+        {% endfor %}
+    {% else %}
+        <h3>No se encontró el estudiante.</h3>
+    {% endif %}
+
+{% endblock %}

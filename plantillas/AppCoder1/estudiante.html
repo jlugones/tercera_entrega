@@ -1,0 +1,32 @@
+{% extends "AppCoder1/../base.html" %}
+
+{% block contenidoCambia %}
+
+{# Mostrar listado #}
+    <h1>Listado alumnos de la academia:</h1>
+    {% if alumnos %}
+        {% for alumno in alumnos %}
+
+            <p> {{ alumno }}
+                <a href=" {% url 'AppCoder1EliminarEstudiante' alumno.apellido %} ">Eliminar</a>
+                <a href=" {% url 'AppCoder1EditarEstudiante' alumno.apellido %} ">Editar</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <h4> No hay alumnos cargados en este momento.</h4>
+    {% endif %}
+
+<button onclick="location.href= '{% url 'AppCoder1CrearAlumno' %}' "  >Guardar alumno nuevo</button>
+
+
+
+{# Buscar en el listado #}
+    <form action="{% url 'AppCoder1BusqAlumno' %} " method="POST" style="background-color: lightsteelblue">
+        {% csrf_token %}
+        {{ formsBusqEst.as_table }}
+        <input type="submit" value="Buscar">
+
+    </form>
+
+{% endblock %}
+

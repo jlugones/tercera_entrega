@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block contenidoCambia %}
+    {% if cursos %}
+        {% for curso in cursos %}
+            <p> {{ curso }}</p>
+        {% endfor %}
+    {% else %}
+        <h3>No se encontró el curso.</h3>
+    {% endif %}
+
+{% endblock %}

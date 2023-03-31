@@ -1,0 +1,13 @@
+{% extends "AppCoder1/../base.html" %}
+
+{% block contenidoCambia %}
+
+
+{# Crear en el listado #}
+ <form action="{% url 'AppCoder1CrearAlumno' %}" method="POST" style="background-color: lightsteelblue" >
+    {% csrf_token %}
+    {{ forms.as_table }}
+    <input type="submit" value="Guardar">
+    </form>
+
+{% endblock %}
